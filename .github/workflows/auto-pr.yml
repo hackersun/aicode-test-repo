@@ -1,0 +1,27 @@
+name: Auto PR Review
+
+on:
+  pull_request:
+    types: [opened, synchronize]
+
+jobs:
+  review:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - uses: actions/checkout@v4
+    
+    - name: PR Size Check
+      run: |
+        echo "Checking PR size..."
+        git fetch origin ${{ github.base_ref }}
+        CHANGED_FILES=$(git diff --name-only origin/${{ github.base_ref }} | wc -l)
+        echo "Changed files: $CHANGED_FILES"
+        if [ $CHANGED_FILES -gt 50 ]; then
+          echo "::warning::PR contains many files ($CHANGED_FILES), consider splitting"
+        fi
+    
+    - name: Check for TODO/FIXME
+      run: |
+        echo "Checking for TODO/FIXME comments..."
+        grep -r "TODO\|FIXME" --include="*.js" --include="*.ts" --include="*.py" . || echo "No TODOs found"
