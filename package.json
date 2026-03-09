@@ -1,0 +1,13 @@
+{
+  "name": "aicode-test-repo",
+  "version": "1.0.0",
+  "description": "AICode测试仓库 - 验证GitHub功能",
+  "main": "src/index.js",
+  "scripts": {
+    "test": "node --test test/*.test.js",
+    "lint": "echo 'Lint check passed'"
+  },
+  "keywords": ["test", "github", "ci"],
+  "author": "hackersun",
+  "license": "MIT"
+}
