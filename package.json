@@ -1,0 +1,14 @@
+{
+  "name": "aicode-test-repo",
+  "version": "1.0.0",
+  "description": "AICode测试仓库 - OpenCode开发演示",
+  "main": "src/calculator.js",
+  "scripts": {
+    "test": "jest",
+    "lint": "eslint src/ tests/"
+  },
+  "devDependencies": {
+    "jest": "^29.0.0",
+    "eslint": "^8.0.0"
+  }
+}
